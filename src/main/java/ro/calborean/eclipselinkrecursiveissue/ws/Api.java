@@ -6,7 +6,7 @@ import javax.jws.WebService;
 import ro.calborean.eclipselinkrecursiveissue.ws.repo.ParentEntityBean;
 import ro.calborean.eclipselinkrecursiveissue.ws.repo.entities.ParentEntity;
 
-@WebService
+@WebService(serviceName = "ApiService")
 public class Api {
 
     @EJB
@@ -15,8 +15,9 @@ public class Api {
     @WebMethod(operationName = "getData")
     public String getData() {
         ParentEntity p = new ParentEntity();
+        p.setIdParent(1l);
         bean.find(p);
-        return "ok";
+        return p.getName();
     }
     
 }

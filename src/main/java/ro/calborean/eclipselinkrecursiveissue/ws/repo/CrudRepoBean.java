@@ -13,15 +13,10 @@ import org.eclipse.persistence.queries.ReadAllQuery;
 
 public abstract class CrudRepoBean<T> {
 
-    @PersistenceContext(unitName = "lib/ondemand-domain.jar#ondemand-db")
+    @PersistenceContext(unitName = "testdb")
     private EntityManager manager;
 
     protected CrudRepoBean() {
-    }
-
-    protected void flushClear() {
-        manager.flush();
-        manager.clear();
     }
 
     public List<T> find(T entity) {
