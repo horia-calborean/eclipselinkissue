@@ -13,29 +13,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name = "Parent")
-public class ParentEntity implements Serializable {
+@Table(name = "Main")
+public class MainEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdParent")
+    @Column(name = "IdMain")
     private Long idParent;
 
     @Column(name = "Name", nullable = false)
     private String name;
-    @JoinTable(name = "ParentChildrens",
-            joinColumns = {
-                @JoinColumn(name = "IdParent", referencedColumnName = "IdParent")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "IdChild", referencedColumnName = "IdChild")})
-    @ManyToMany
-    private List<ChildEntity> children;
+    
+    @JoinColumn(name = "IdParent", referencedColumnName = "IdParent")
+    @ManyToOne
+    private ParentEntity parent;
 
    @Version
     @Column(name = "RecordVersion", nullable = false)
@@ -57,12 +53,12 @@ public class ParentEntity implements Serializable {
         this.name = name;
     }
 
-    public List<ChildEntity> getChildren() {
-        return children;
+    public ParentEntity getParent() {
+        return parent;
     }
 
-    public void setChildren(List<ChildEntity> children) {
-        this.children = children;
+    public void setParent(ParentEntity parent) {
+        this.parent = parent;
     }
 
     public Long getRecordVersion() {
@@ -72,7 +68,7 @@ public class ParentEntity implements Serializable {
     public void setRecordVersion(Long recordVersion) {
         this.recordVersion = recordVersion;
     }
-   
-   
+
+    
 
 }

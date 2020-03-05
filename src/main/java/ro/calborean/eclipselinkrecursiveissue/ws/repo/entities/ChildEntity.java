@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "Child")
@@ -51,6 +52,7 @@ public class ChildEntity implements Serializable {
         this.name = name;
     }
 
+    @XmlTransient
     public List<ParentEntity> getParents() {
         return parents;
     }
@@ -66,6 +68,5 @@ public class ChildEntity implements Serializable {
     public void setRecordVersion(Long recordVersion) {
         this.recordVersion = recordVersion;
     }
-    
-   
+
 }

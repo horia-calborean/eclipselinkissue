@@ -17,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "Parent")
@@ -57,6 +58,7 @@ public class ParentEntity implements Serializable {
         this.name = name;
     }
 
+    @XmlTransient
     public List<ChildEntity> getChildren() {
         return children;
     }

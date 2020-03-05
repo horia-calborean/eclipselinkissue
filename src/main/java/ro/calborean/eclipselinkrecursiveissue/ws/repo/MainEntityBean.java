@@ -2,10 +2,10 @@ package ro.calborean.eclipselinkrecursiveissue.ws.repo;
 
 import javax.ejb.Startup;
 import javax.ejb.Stateless;
-import ro.calborean.eclipselinkrecursiveissue.ws.repo.entities.ParentEntity;
+import ro.calborean.eclipselinkrecursiveissue.ws.repo.entities.MainEntity;
 
 @Startup
 @Stateless
-public class ParentEntityBean extends CrudRepoBean<ParentEntity>{
+public class MainEntityBean extends CrudRepoBean<MainEntity>{
     
 }

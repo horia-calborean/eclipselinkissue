@@ -34,6 +34,19 @@ CREATE TABLE `ParentChildrens` (
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+
+CREATE TABLE `Main` (
+	`IdMain` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`IdParent` BIGINT(20) NOT NULL,
+	`Name` VARCHAR(255) NOT NULL,
+	`RecordVersion` BIGINT(20) NOT NULL,
+	PRIMARY KEY (`IdMain`),
+	CONSTRAINT `Main_ibfk_1` FOREIGN KEY (`IdParent`) REFERENCES `Parent` (`IdParent`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=33144
+;
 ```
 
 ## Table fill code
@@ -50,6 +63,10 @@ INSERT INTO `child` (`IdChild`, `Name`, `RecordVersion`) VALUES (2, 'Child2', 0)
 INSERT INTO `parentchildrens` (`IdParent`, `IdChild`) VALUES (1, 1);
 INSERT INTO `parentchildrens` (`IdParent`, `IdChild`) VALUES (2, 1);
 INSERT INTO `parentchildrens` (`IdParent`, `IdChild`) VALUES (1, 2);
+
+INSERT INTO `main` (`IdMain`, `IdParent`, `Name`, `RecordVersion`) VALUES (1, 1, 'Main1', 0);
+INSERT INTO `main` (`IdMain`, `IdParent`, `Name`, `RecordVersion`) VALUES (2, 2, 'Main2', 0);
+
 
 ```
 ## Domain XML config (connection pools)

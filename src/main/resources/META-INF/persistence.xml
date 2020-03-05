@@ -5,8 +5,10 @@
     <jta-data-source>mysql/test</jta-data-source>
     <class>ro.calborean.eclipselinkrecursiveissue.ws.repo.entities.ChildEntity</class>
     <class>ro.calborean.eclipselinkrecursiveissue.ws.repo.entities.ParentEntity</class>
+    <class>ro.calborean.eclipselinkrecursiveissue.ws.repo.entities.MainEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
+      <property name="eclipselink.weaving" value="static"/>
       <property name="eclipselink.cache.shared.default" value="false"/>
       <property name="eclipselink.jdbc.uppercase-columns" value="true"/>
       <property name="eclipselink.logging.level" value="FINEST"/>
